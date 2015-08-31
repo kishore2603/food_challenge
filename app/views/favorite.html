@@ -1,0 +1,19 @@
+
+<h1>Favorites</h1>
+
+<table class="table table-striped"  ng-show="favorites.length>0">
+	<tr>
+    	<th>ndbno</th>
+        <th>Food</th>
+        <th>Food Group</th>
+      
+    </tr>
+	<tr ng-repeat="list in favorites">
+    	<td><a href="#/foodReport/{{list.ndbno}}">{{list.ndbno}}</a></td>
+        <td><a href="#/foodReport/{{list.ndbno}}">{{list.name}}</a>	</td>
+        <td>{{list.group}}</td>
+
+    </tr>
+</table>
+<div class="well" ng-hide="favorites.length>0">Sorry! you have not added any favorites</div>
+

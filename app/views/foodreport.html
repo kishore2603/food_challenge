@@ -1,0 +1,28 @@
+<h1>Basic Report:  {{basicReport.ndbno}}, {{basicReport.name}} </h1>
+
+<table class="table" >
+<thead><tr>
+	<th>Nutrient</th>
+    <th>Unit</th>
+    <th>Value per 100 g</th>
+    <th>pat (1" sq, 1/3" high) 
+5g</th>
+    <th>tbsp 
+14.2g</th>
+    <th>cup 
+227g</th>
+    <th>stick 
+113g</th>
+</tr></thead>
+<tbody ng-repeat="(key, value) in basicReport.nutrients | groupBy: 'group'">
+  <tr class="active"><td colspan="7">Group name: {{ key }}</td></tr>
+  <tr ng-repeat="item in value">
+    <td>{{ item.name }}</td>
+    <td>{{ item.unit }}</td> 
+    <td>{{ item.value }}</td>
+    <td ng-repeat="m in item.measures">{{m.value}} </td>
+  
+    
+  </tr>
+</tbody>
+</table>

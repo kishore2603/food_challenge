@@ -1,0 +1,36 @@
+<h1>Food List</h1>
+
+
+<div class="well">
+ <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="searchkey" typeahead="item.name as item.name for item in items | filter:{name:$viewValue}">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="searchClicked()">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+</div>
+
+
+<table class="table table-striped" >
+	<tr>
+    	<th>ndbno</th>
+        <th>Food</th>
+        <th>Food Group</th>
+        <th>Add to Favorite</th>
+    </tr>
+	<tr ng-repeat="list in items">
+    	<td><a href="#/foodReport/{{list.ndbno}}">{{list.ndbno}}</a></td>
+        <td><a href="#/foodReport/{{list.ndbno}}">{{list.name}}</a>	</td>
+        <td>{{list.group}}</td>
+        <td><a href="" class="glyphicon glyphicon-plus" ng-hide="list.shower" ng-click="AddTofavorite(list);list.shower=true;  "></a><span ng-show="list.shower" class="label label-success">Added to Favorites</span></td>
+    </tr>
+</table>
+<pagination total-items="total" ng-model="paginationSelect" boundary-links="true" max-size="5" rotate="false" ng-change="pageChanged()" items-per-page="pageSize"></pagination>
+
+
+
+
